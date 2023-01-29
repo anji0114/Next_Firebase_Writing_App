@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { auth } from "src/utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Image from "next/image";
 
 export default function Nav() {
   const [user, loading] = useAuthState(auth);
-  console.log(user);
+
   return (
     <nav className="flex justify-between items-center py-10">
       <Link href={"/"}>
@@ -26,7 +27,13 @@ export default function Nav() {
               </button>
             </Link>
             <Link href="/dashboard">
-              <img className="w-12 rounded-full cursor-pointer" src={user.photoURL} alt="avatar" />
+              <Image
+                className="w-12 rounded-full cursor-pointer"
+                src={user.photoURL}
+                width={48}
+                height={48}
+                alt="avatar"
+              />
             </Link>
           </div>
         )}
