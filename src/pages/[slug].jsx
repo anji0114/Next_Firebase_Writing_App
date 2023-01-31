@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 import { auth, db } from "src/utils/firebase";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 import Message from "@/components/message";
 import { arrayUnion, doc, onSnapshot, Timestamp, updateDoc } from "firebase/firestore";

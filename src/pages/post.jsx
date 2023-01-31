@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { addDoc, collection, doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 export default function Post() {
   const [post, setPost] = useState({ description: "" });
