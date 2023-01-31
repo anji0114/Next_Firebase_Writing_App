@@ -1,6 +1,7 @@
 // react hooks
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 // firebase
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "src/utils/firebase";
@@ -52,9 +53,11 @@ export default function Dashboard() {
               >
                 <BsTrash2Fill className="text-2xl" /> Delete
               </button>
-              <button className="text-teal-600 flex items-center justify-center gap-2 py-2 text-sm">
-                <AiFillEdit className="text-2xl" /> Edit
-              </button>
+              <Link href={{ pathname: "/post", query: post }}>
+                <button className="text-teal-600 flex items-center justify-center gap-2 py-2 text-sm">
+                  <AiFillEdit className="text-2xl" /> Edit
+                </button>
+              </Link>
             </div>
           </Message>
         ))}

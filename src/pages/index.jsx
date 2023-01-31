@@ -1,7 +1,9 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "src/utils/firebase";
+
 import Message from "@/components/message";
 
 export default function Home() {
@@ -19,8 +21,6 @@ export default function Home() {
     getPosts();
   }, []);
 
-  console.log(allPosts);
-
   return (
     <>
       <Head>
@@ -32,7 +32,16 @@ export default function Home() {
       <div className="my-12 text-lg font-medium">
         <h2>See what other people are saying</h2>
         {allPosts.map((post) => (
-          <Message {...post} key={post.id}></Message>
+          <Message {...post} key={post.id}>
+            <p className="text-right pr-4">
+              <Link
+                className="text-sm text-gray-600"
+                href={{ pathname: `/${post.id}`, query: { ...post } }}
+              >
+                <button>{post.comments?.length > 0 ? post.comments.length : 0}comments</button>
+              </Link>
+            </p>
+          </Message>
         ))}
       </div>
     </>
